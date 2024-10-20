@@ -1,0 +1,21 @@
+.tags-wrapper{
+    width: 90%;
+    overflow-x: auto;
+  }
+  
+  .tags{
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .tag{
+    font-size: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    transition: 0.3s ease;
+  }
+  
+  .tag.selected{
+    background-color: #1a448b;
+    color: #ede8f5;
+  }
