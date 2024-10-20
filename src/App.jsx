@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./App.css";
 import Tags from "./Tags/Tags";
@@ -51,14 +51,28 @@ function App() {
     },
   ];
 
+  const searchTermRef = useRef();
+
   const [recipes, setRecipes] = useState(allRecipes);
+
+  const searchRecipes = () => {
+    const term = searchTermRef.current.value;
+    if (term === "") {
+      setRecipes(allRecipes);
+      return;
+    }
+    const filteredRecipes = recipes.filter((recipe) =>
+      recipe.title.includes(term)
+    );
+    setRecipes(filteredRecipes);
+  };
 
   return (
     <div className="recipes-main">
       <h2>RECIPES</h2>
       <div className="search-bar">
-        <input placeholder="Search for recipe..." />
-        <div className="icon">
+        <input placeholder="Search for recipe..." ref={searchTermRef} />
+        <div className="icon" onClick={searchRecipes}>
           <SearchIcon style={{ height: "80%", width: "80%" }} />
         </div>
       </div>

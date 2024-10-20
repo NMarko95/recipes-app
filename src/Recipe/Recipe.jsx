@@ -6,7 +6,7 @@ const Recipe = ({ recipe }) => {
   return (
     <div className="recipe">
       <h4 className="recipe-title">{title}</h4>
-      <img src={image} className="recipe-image" />
+      <img alt="" src={image} className="recipe-image" />
       {ingredients.length !== 0 && (
         <div className="recipe-ingredients">
           {ingredients.map((ingredient, index) => {
